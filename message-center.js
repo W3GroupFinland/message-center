@@ -11,10 +11,10 @@ MessageCenterModule
     _this.options = {};
     _this.setGlobalOptions = function(options) {
       _this.options = options;
-    }
+    };
     _this.getOptions = function(options) {
       return _this.options;
-    }
+    };
     this.$get = function() {
       return {
         setGlobalOptions: _this.setGlobalOptions,
@@ -43,7 +43,7 @@ MessageCenterModule
           var availableTypes = ['info', 'warning', 'danger', 'success'],
             service = this;
           options = options || {};
-          var options = angular.extend($messageCenterService.getOptions(), options);
+          options = angular.extend(options, $messageCenterService.getOptions());
           if (availableTypes.indexOf(type) == -1) {
             throw "Invalid message type";
           }

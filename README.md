@@ -68,6 +68,15 @@ You can add a timer to the alert so it auto dismisses. To do so, just add a time
 messageCenterService.add('success', 'Bye bye in 3s!', { timeout: 3000 });
 ```
 
+### Prevent duplicate messages
+You can prevent duplicate message with the 'singleton' option. Duplicates are prevented if the type, message text, and status match.
+For example, this will show only the first error message:
+
+```js
+messageCenterService.add('danger', 'Cannot reach server!', { timeout: 3000, singleton: true });
+messageCenterService.add('danger', 'Cannot reach server!');
+```
+
 ## Directive
 The directive `mcMessages` will allow you to place the messages wherever you want in your layout. Just drop `<mc-messages></mc-messages>` or `<div mc-messages></div>` somewhere in your partials and if there are any messages to be shown they will be shown there. Since it's a regular directive you can perform the common alterations and modifications to it to suit your needs.
 
