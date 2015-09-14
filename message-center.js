@@ -57,6 +57,16 @@ MessageCenterModule
           };
           messageObject.message = options.html ? $sce.trustAsHtml(message) : message;
           messageObject.html = !!options.html;
+          if (options.singleton) {
+            for (var index = this.mcMessages.length - 1; index >= 0; index--) {
+              if (this.mcMessages[index].message === messageObject.message &&
+                this.mcMessages[index].type === messageObject.type &&
+                this.mcMessages[index].status === messageObject.status
+                ) {
+                return;
+              }
+            }
+          }
           if (angular.isDefined(options.timeout)) {
             messageObject.timer = $timeout(function () {
               messageObject.close();
